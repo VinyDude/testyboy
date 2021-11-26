@@ -1,0 +1,42 @@
+<body id="p">
+<div>
+<style>
+#image{
+	align: center;
+	width:3024px;
+	height:4032px;
+}
+</style>
+<img id="image" scr="images/image.jpg"/>
+<label for="colorWell">Color:</label>
+<input type="color" value="#ff0000" id="colorWell">
+
+
+
+</body>
+<script>
+var colorWell;
+var defaultColor = "#0000ff";
+
+window.addEventListener("load", startup, false);
+
+function startup() {
+  colorWell = document.querySelector("#colorWell");
+  colorWell.value = defaultColor;
+  colorWell.addEventListener("input", updateFirst, false);
+  colorWell.addEventListener("change", updateAll, false);
+  colorWell.select();
+}
+function updateFirst(event) {
+  var p = document.querySelector("body");
+
+  if (p) {
+    p.style.color = event.target.value;
+  }
+}
+function updateAll(event) {
+  document.querySelectorAll("body").forEach(function(p) {
+    p.style.backgroundColor = event.target.value;
+  });
+}
+</script>
